@@ -13,7 +13,7 @@ Run
 python get_favorites.py
 ```
 
-Compile `word_cloud` (make sure livraries from `requirements.txt` are installed):
+Compile `word_cloud` (make sure libraries from `requirements.txt` are installed):
 
 ```
 cd word_cloud
