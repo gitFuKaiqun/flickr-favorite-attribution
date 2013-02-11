@@ -26,7 +26,7 @@ except Exception, e:
         print 'Pickle file for username_dict does not exist, it will be created'
 
 # TODO: extend for the case of several pages of favorites
-favorites = flickr.favorites_getList()
+favorites = flickr.favorites_getList(per_page=500)
 photos = favorites.findall('./photos/photo')
 names_list = []
 for p in photos:
