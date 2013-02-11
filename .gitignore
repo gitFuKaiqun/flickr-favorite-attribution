@@ -37,8 +37,14 @@ nosetests.xml
 # vim
 *.swp
 
+# extra and generated files in word_cloud script
+word_cloud/constitution.txt
+word_cloud/constitution_.png
+word_cloud/query_integral_image.c
+
 # local config files etc.
 progress.*
 username_dict.p
 config.py
 names.txt
+names.png
