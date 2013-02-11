@@ -5,18 +5,25 @@
 
 import random
 
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+try:
+    from PIL import Image
+    from PIL import ImageDraw
+    from PIL import ImageFont
+except ImportError:
+    import Image
+    import ImageDraw
+    import ImageFont
 
 import numpy as np
+
 from query_integral_image import query_integral_image
 
-FONT_PATH = "/usr/share/fonts/truetype/droid/DroidSansMono.ttf"
+
+FONT_PATH = "../OldSansBlack.ttf"
 
 
 def make_wordcloud(words, counts, fname, font_path=None, width=400, height=200,
-                   margin=5, ranks_only=False):
+                   margin=5, ranks_only=False, redraw_in_color=True):
     """Build word cloud using word counts, store in image.
 
     Parameters
@@ -135,20 +142,24 @@ def make_wordcloud(words, counts, fname, font_path=None, width=400, height=200,
 
         integral[x:, y:] = partial_integral
 
-    # redraw in color
-    img = Image.new("RGB", (width, height))
-    draw = ImageDraw.Draw(img)
-    everything = zip(words, font_sizes, positions, orientations)
-    for word, font_size, position, orientation in everything:
-        font = ImageFont.truetype(font_path, font_size)
-        # transpose font optionally
-        transposed_font = ImageFont.TransposedFont(font,
-                                                   orientation=orientation)
-        draw.setfont(transposed_font)
-        draw.text((position[1], position[0]), word,
-                  fill="hsl(%d" % random.randint(0, 255) + ", 80%, 50%)")
-    img.show()
-    img.save(fname)
+    if redraw_in_color:
+        # redraw in color
+        img = Image.new("RGB", (width, height))
+        draw = ImageDraw.Draw(img)
+        everything = zip(words, font_sizes, positions, orientations)
+        for word, font_size, position, orientation in everything:
+            font = ImageFont.truetype(font_path, font_size)
+            # transpose font optionally
+            transposed_font = ImageFont.TransposedFont(font,
+                                                       orientation=orientation)
+            draw.setfont(transposed_font)
+            draw.text((position[1], position[0]), word,
+                      fill="hsl(%d" % random.randint(0, 255) + ", 80%, 50%)")
+        img.show()
+        img.save(fname)
+    else:
+        img_grey.show()
+        img_grey.save(fname)
 
 
 if __name__ == "__main__":

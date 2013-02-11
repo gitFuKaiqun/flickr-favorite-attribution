@@ -1,3 +1,13 @@
+copied from https://github.com/amueller/word_cloud to address issues with PIL import
+
+## What's changed from original script
+
+- Import PIL in better way (it depends on installations)
+- Use font from this project as default
+- Added option to redraw in color (by default is `True` as in original)
+
+## Original README
+
 word cloud
 ==========
 
