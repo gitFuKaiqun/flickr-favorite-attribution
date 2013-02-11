@@ -33,3 +33,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# vim
+*.swp
+
+# local config files etc.
+progress.*
+username_dict.p
+config.py
+names.txt
