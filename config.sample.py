@@ -3,3 +3,13 @@
 
 FLICKR_KEY = ''
 FLICKR_SECRET = ''
+
+
+# image
+
+CLOUD_IMAGE_FILENAME = 'names.png'
+
+# size of image
+
+WIDTH = 1920
+HEIGHT = 1080
